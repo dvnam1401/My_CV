@@ -1,0 +1,198 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+%   IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip}
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+% \usepackage[a4paper, margin=1in]{geometry} % Bị đẩy sang trang
+\usepackage[a4paper, margin=0.8in]{geometry} % SỬA LỖI: Chỉnh lề nhỏ lại một chút
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col.
+% type
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+% \addbibresource{citations.bib} % No publications in this CV
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5} % Using version 5
+
+%debug page outer frames
+%\usepackage{showframe}
+
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}
+    }
+
+
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{DANG VAN NAM} \\[7.5pt]
+\href{tel:0824231401}{\raisebox{-0.05\height}\faMobile \ 082-423-1401} \ $|$ \ 
+\href{mailto:vannamdang2003@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ vannamdang2003@gmail.com} \ $|$ \ 
+\href{https://github.com/dvnam1401}{\raisebox{-0.05\height}\faGithub\ dvnam1401} \ $|$ \ 
+\raisebox{-0.05\height}\faMapMarker \ Ngu Hanh Son, Da Nang \\ % Use \faMapMarker to prevent errors
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Interests/ Keywords/ Summary
+\section{Professional Objective}
+Final-year Software Engineering student at Duy Tan University, with a strong foundation in \textbf{Python, Java, C#}, and web frameworks (\textbf{Django, FastAPI, ASP.NET, Spring Boot}). Ready to apply knowledge of \textbf{Leader} roles and \textbf{Agile Scrum} processes in a professional environment. Eager to leverage both \textbf{Backend/Full-stack Development} capabilities to build products and specialized \textbf{Automation Testing (Java/Selenium)} skills to ensure comprehensive software quality.
+
+%Experience
+\section{Project Experience}
+
+% --- PROJECT 1 (UPDATED) ---
+\begin{joblong}{FAMILY SUGGESTION SYSTEM}{Feb 2025}
+\item \textbf{Role:} \textbf{Project Leader}. Responsible for \textbf{database design (MySQL)}, programming the entire \textbf{Backend API (Python/FastAPI)}, and \textbf{developing the Crawling Tool with Python/Selenium} to gather source data.
+\item \textbf{Core Functionality:} Programmed logic to suggest food suitable for user health based on their health history.
+\item \textbf{Performance Optimization:} Integrated \textbf{Redis Caching} to store temporary data, significantly reducing query processing time to the MySQL DB.
+\item \textbf{Process:} Operated and managed the project using the \textbf{Agile Scrum} model.
+\item \textbf{Technologies:} Python, FastAPI, React, Redis, MySQL.
+\end{joblong}
+
+% --- PROJECT 2 (UPDATED) ---
+\begin{joblong}{AI PRODUCT RECOMMENDATIONS FOR E-COMMERCE}{Sep 2024}
+\item \textbf{Role:} \textbf{Project Leader}. Responsible for \textbf{database design}, served as the main \textbf{Backend developer (Python/Django)}, and also \textbf{developed the Crawling Tool with Python/Selenium} to gather data for the website.
+\item \textbf{Core Functionality:} Built a personalized product recommendation platform based on user interaction data on the system.
+\item \textbf{Performance Optimization:} Applied \textbf{Redis Caching}, significantly reducing query processing time to the MySQL DB, improving user experience.
+\item \textbf{Process:} Built and deployed the project following the \textbf{Agile Scrum} model.
+\item \textbf{Technologies:} Python, Django, React, Redis, MySQL.
+\end{joblong}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education \& Certification}
+
+\textbf{EDUCATION}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+2021 – 2025 & Bachelor of Software Engineering at \textbf{Duy Tan University} \\
+\end{tabularx}
+
+\vspace{5pt} % Small space
+\textbf{PROFESSIONAL TRAINING}
+
+\begin{joblong}{Software Testing Course (Manual \& Automation)}{CyberSoft Academy}
+\item Content: Completed specialized training in Test Case Design, API Testing, and \textbf{Automation Testing} (using \textbf{Java/Selenium WebDriver, TestNG}).
+\end{joblong}
+
+\begin{jobshort}{Cyber Security Certificate}{AGEST (Sep 2024)}
+\end{jobshort}
+
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Professional Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Programming Languages & \normalsize{PYTHON, JAVA, C\#, C/C++}\\
+Web Frameworks & \normalsize{DJANGO, FASTAPI, SPRING BOOT, ASP.NET}\\
+Testing \& QA & \normalsize{\textbf{Automation:} Java, Selenium WebDriver, JUnit/TestNG. \textbf{Manual:} Test Case Design, Test Planning, API Testing (Postman).}\\
+Databases & \normalsize{MySQL, SQL Server, MongoDB, Redis}\\
+Tools \& Others & \normalsize{Git, \textbf{Agile Scrum (Project Management)}, \textbf{Selenium (Data Crawling)}, Visual Studio, PyCharm, VS Code, Postman.}\\ % Rasa removed
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
