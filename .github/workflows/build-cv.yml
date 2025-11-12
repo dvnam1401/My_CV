@@ -28,7 +28,7 @@ jobs:
             texlive-fonts-recommended
             texlive-fonts-extra
             fonts-font-awesome
-          args: -pdf -file-line-error -interaction=nonstopmode
+          args: -pdf -bibtex- -file-line-error -interaction=nonstopmode
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
