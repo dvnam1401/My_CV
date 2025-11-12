@@ -68,3 +68,4 @@ jobs:
           publish_branch: gh-pages
           publish_dir: .
           keep_files: false
+          cname: www.dangvannam.id.vn
