@@ -1,6 +1,6 @@
 # Personal CV - Dang Van Nam
 
-[![View CV](https://img.shields.io/badge/View_CV-PDF-blue.svg)](https://dvnam1401.github.io/My_CV/cv.pdf)
+[![View CV](https://img.shields.io/badge/View_CV-PDF-blue.svg)](https://dvnam1401.github.io/My_CV/)
 
 ## 📖 About this Project
 
