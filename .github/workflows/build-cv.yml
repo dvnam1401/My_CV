@@ -3,30 +3,23 @@ name: Build LaTeX CV
 on:
   push:
     branches:
-      - main # (hoặc master nếu branch chính của bạn là master)
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # Bước 1: Lấy code từ repo về
       - name: Check out repo
         uses: actions/checkout@v3
 
-      # --------------------------------------------------------------------
-      # BƯỚC CÀI ĐẶT NẰM Ở ĐÂY - HÃY ĐẢM BẢO BẠN CÓ BƯỚC NÀY
-      # --------------------------------------------------------------------
-      - name: Set up TeX Live
-        uses: xu-cheng/texlive-action@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v4
         with:
-          # Cài đặt latexmk và fontawesome5
-          packages: latexmk fontawesome5
+          root_file: cv.tex
+          latexmk_use_xelatex: false
+          latexmk_shell_escape: false
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
 
-      # Bước 3: Biên dịch CV (Sẽ không lỗi "command not found" nữa)
-      - name: Compile CV
-        run: latexmk -pdf cv.tex
-
-      # Bước 4: Deploy
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
