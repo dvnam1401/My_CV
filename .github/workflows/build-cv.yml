@@ -10,34 +10,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Install LaTeX and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-xetex \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            fonts-font-awesome \
+            biber \
+            latexmk
 
       - name: Clean previous build artifacts
         run: |
-          rm -f cv.aux cv.bbl cv.bcf cv.blg cv.fdb_latexmk cv.fls cv.log cv.out cv.run.xml cv.toc cv.bcf-SAVE-ERROR cv.bbl-SAVE-ERROR
+          rm -f cv.aux cv.bbl cv.bcf cv.blg cv.fdb_latexmk cv.fls cv.log cv.out cv.run.xml cv.toc cv.bcf-SAVE-ERROR cv.bbl-SAVE-ERROR cv.pdf
 
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v4
-        with:
-          root_file: cv.tex
-          os: debian
-          latexmk_use_xelatex: true
-          latexmk_shell_escape: false
-          extra_system_packages: |
-            texlive-latex-extra
-            texlive-fonts-recommended
-            texlive-fonts-extra
-            fonts-font-awesome
-            biber
-          args: -pdf -file-line-error -interaction=nonstopmode
+      - name: Compile LaTeX document with xelatex
+        run: |
+          latexmk -xelatex -pdf -file-line-error -interaction=nonstopmode cv.tex
+
+      - name: Check if PDF was generated
+        run: |
+          if [ ! -f cv.pdf ]; then
+            echo "❌ Error: cv.pdf was not generated"
+            echo "------- LaTeX Log -------"
+            cat cv.log || echo "cv.log not found"
+            exit 1
+          fi
+          echo "✅ PDF generated successfully"
+          ls -lh cv.pdf
 
       - name: Deploy to GitHub Pages
+        if: success()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: .
-          glob_patterns: |
-            cv.pdf
-            index.html
+          cname: ""
+          files: cv.pdf
           keep_files: false
