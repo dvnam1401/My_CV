@@ -1,0 +1,13 @@
+# This is the updated build-cv.yml file
+
+# Update Alpine Linux package names
+
+packages:
+  - texlive-full
+  - texlive-latex-extra
+  - texlive-fonts-recommended
+
+# Ensure proper LaTeX compilation
+tex_compiler: pdflatex
+
+# Other necessary instructions...
