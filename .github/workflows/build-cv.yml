@@ -20,7 +20,7 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: cv.tex
-          os: ubuntu
+          os: debian
           latexmk_use_xelatex: true
           latexmk_shell_escape: false
           extra_system_packages: |
