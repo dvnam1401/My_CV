@@ -1,0 +1,43 @@
+name: Build LaTeX CV
+# Chạy workflow này mỗi khi bạn push lên branch 'main'
+on:
+  push:
+    branches:
+      - main # (Nếu branch chính của bạn là 'master', hãy sửa 'main' thành 'master')
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Bước 1: Lấy code từ repo về
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      # Bước 2: Cài đặt TeX Live (trình biên dịch LaTeX)
+      - name: Set up TeX Live
+        uses: xu-cheng/texlive-action@v2
+        with:
+          # Cài các gói cần thiết:
+          # - latexmk: Tự động biên dịch
+          # - fontawesome5: Rất quan trọng để render các icon (faMobile, faGithub...)
+          packages: latexmk fontawesome5
+
+      # Bước 3: Biên dịch file .tex ra .pdf
+      - name: Compile CV
+        run: latexmk -pdf cv.tex # Tên file .tex của bạn là cv.tex
+
+      # Bước 4: Deploy file PDF và index.html lên branch 'gh-pages'
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages # Tên branch sẽ chứa file PDF
+          publish_dir: .
+          
+          # Chỉ publish 2 file quan trọng này
+          glob_patterns: |
+            cv.pdf
+            index.html
+          
+          # Xóa các file cũ trên branch gh-pages để đảm bảo sạch sẽ
+          keep_files: false
