@@ -26,7 +26,8 @@ jobs:
             texlive-fonts-extra \
             fonts-font-awesome \
             biber \
-            latexmk
+            latexmk \
+            make
 
       - name: Ensure minimal bibliography file (no changes to cv.tex)
         # Create an empty citations.bib if it doesn't exist so bibliography tools
@@ -38,26 +39,24 @@ jobs:
 
       - name: Clean previous build artifacts
         run: |
-          rm -f cv.aux cv.bbl cv.bcf cv.blg cv.fdb_latexmk cv.fls cv.log cv.out cv.run.xml cv.toc \
-                cv.bcf-SAVE-ERROR cv.bbl-SAVE-ERROR cv.pdf
+          rm -f *.aux *.bbl *.bcf *.blg *.fdb_latexmk *.fls *.log *.out *.run.xml *.toc *.pdf
 
-      - name: Compile LaTeX document with xelatex (tolerate non-zero latexmk exit if PDF exists)
+      - name: Compile LaTeX document using Makefile
         run: |
-          # Run latexmk explicitly with xelatex. If latexmk exits non-zero we do not let the step
-          # fail immediately — instead we check for the produced PDF and show logs for debugging.
-          set -o pipefail
-          latexmk -xelatex -pdf -file-line-error -interaction=nonstopmode cv.tex || true
-          if [ ! -f cv.pdf ]; then
-            echo "❌ cv.pdf was NOT generated. Showing cv.log for debugging:"
+          # Chạy lệnh make all để sử dụng cấu hình trong Makefile
+          # Lệnh này sẽ tạo ra file Dang_Van_Nam_CV.pdf
+          make all
+          
+          # Kiểm tra xem file PDF tên mới đã được tạo chưa
+          if [ ! -f Dang_Van_Nam_CV.pdf ]; then
+            echo "❌ Dang_Van_Nam_CV.pdf was NOT generated. Checking logs..."
             if [ -f cv.log ]; then
               sed -n '1,200p' cv.log || true
-            else
-              echo "cv.log not found"
             fi
             exit 1
           else
-            echo "✅ cv.pdf generated"
-            ls -lh cv.pdf
+            echo "✅ Dang_Van_Nam_CV.pdf generated successfully."
+            ls -lh Dang_Van_Nam_CV.pdf
           fi
 
       - name: Deploy to GitHub Pages
