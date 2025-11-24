@@ -13,7 +13,7 @@
 %	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 %	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 %	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-%   IN NO EVENT SHALL THE
+%   IN NO EVENT SHALL THE
 %	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 %	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 %	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
@@ -26,7 +26,7 @@
 %	DOCUMENT DEFINITION
 %----------------------------------------------------------------------------------------
 
-% article class because we want to fully customize the page and not use a cv template
+% Article class for customization. 12pt font as requested.
 \documentclass[a4paper,12pt]{article}
 
 %----------------------------------------------------------------------------------------
@@ -34,167 +34,168 @@
 %----------------------------------------------------------------------------------------
 \usepackage{url}
 \usepackage{parskip}
-
-%other packages for formatting
-\RequirePackage{color}
-\RequirePackage{graphicx}
+\usepackage{color}
+\usepackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-% \usepackage[a4paper, margin=1in]{geometry} % Bị đẩy sang trang
-\usepackage[a4paper, margin=0.62in]{geometry} % SỬA LỖI: Chỉnh lề nhỏ lại một chút
+\usepackage[a4paper, margin=0.62in]{geometry} % Margins adjusted for A4
 
-%tabularx environment
+% Standard professional font (Times New Roman equivalent)
+\usepackage{mathptmx} 
+
+% Tabularx environment for tables
 \usepackage{tabularx}
 
-%for lists within experience section
+% For lists within experience section
 \usepackage{enumitem}
 
-% centered version of 'X' col.
-% type
+% Centered version of 'X' col.
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 
-%to prevent spillover of tabular into next pages
+% To prevent spillover of tabular into next pages
 \usepackage{supertabular}
-\usepackage{tabularx}
 \newlength{\fullcollw}
 \setlength{\fullcollw}{0.47\textwidth}
 
-%custom \section
+% Custom \section formatting
 \usepackage{titlesec}
 \usepackage{multicol}
 \usepackage{multirow}
 
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+% Header styling: Large, Small Caps, Line underneath
+\titleformat{\section}{\Large\scshape\raggedright\bfseries}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{10pt}{10pt}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+% For social icons
+\usepackage{fontawesome5}
 
-%Setup hyperref package, and colours for links
+% Setup hyperref package (Black links for printing/professional look)
 \usepackage[unicode, draft=false]{hyperref}
-\definecolor{linkcolour}{rgb}{0,0.2,0.6}
-\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-% \addbibresource{citations.bib} % No publications in this CV
-\setlength\bibitemsep{1em}
+\hypersetup{
+    colorlinks=true,
+    breaklinks=true,
+    urlcolor=black, 
+    linkcolor=black
+}
 
-%for social icons
-\usepackage{fontawesome5} % Using version 5
+%----------------------------------------------------------------------------------------
+%	CUSTOM ENVIRONMENTS
+%----------------------------------------------------------------------------------------
 
-%debug page outer frames
-%\usepackage{showframe}
-
-
-% job listing environments
-\newenvironment{jobshort}[2]
-    {
-    % --- SỬA LỖI BỐ CỤC (XÓA CỘT X Ở GIỮA) ---
-    \begin{tabularx}{\linewidth}{@{}X r@{}} 
-    \textbf{#1} & #2 \\[3.75pt]
-    \end{tabularx}
-    }
-    {
-    }
-
+% Environment for jobs/projects with bullet points
 \newenvironment{joblong}[2]
     {
-    % --- SỬA LỖI BỐ CỤC (XÓA CỘT X Ở GIỮA) ---
     \begin{tabularx}{\linewidth}{@{}X r@{}}
-    \textbf{#1} & #2 \\[3.75pt]
+    \textbf{#1} & \textbf{#2} \\[3pt]
     \end{tabularx}
     \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    \begin{itemize}[nosep,after=\strut, leftmargin=1.2em, itemsep=3pt, label=--]
     }
     {
     \end{itemize}
     \end{minipage}
+    \vspace{2pt}
     }
 
-
+% Environment for simple lists (Education/Certificates) without bullets
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & \textbf{#2} \\[3pt]
+    \end{tabularx}
+    }
+    {
+    }
 
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
 %----------------------------------------------------------------------------------------
 \begin{document}
 
-% non-numbered pages
+% Non-numbered pages
 \pagestyle{empty}
 
 %----------------------------------------------------------------------------------------
-%	TITLE
+%	HEADER / CONTACT INFO
 %----------------------------------------------------------------------------------------
 
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{DANG VAN NAM} \\[7.5pt]
-\href{tel:0824231401}{\raisebox{-0.05\height}\faMobile \ 082-423-1401} \ $|$ \ 
+\Huge{\textbf{DANG VAN NAM}} \\[10pt]
+% Dòng 1: Địa chỉ | Số điện thoại
+\raisebox{-0.05\height}\faMapMarker \ Ngu Hanh Son, Da Nang \ $|$ \ 
+\href{tel:0824231401}{\raisebox{-0.05\height}\faMobile \ 082-423-1401} \\[3pt] 
+% Dòng 2: Email | GitHub
 \href{mailto:vannamdang2003@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ vannamdang2003@gmail.com} \ $|$ \ 
-\href{https://github.com/dvnam1401}{\raisebox{-0.05\height}\faGithub\ dvnam1401} \ $|$ \ 
-\raisebox{-0.05\height}\faMapMarker \ Ngu Hanh Son, Da Nang \\ % Use \faMapMarker to prevent errors
+\href{https://github.com/dvnam1401}{\raisebox{-0.05\height}\faGithub\ github.com/dvnam1401} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-% EXPERIENCE SECTIONS
+%	PROFESSIONAL OBJECTIVE
 %----------------------------------------------------------------------------------------
-
-%Interests/ Keywords/ Summary
 \section{Professional Objective}
-Final-year Software Engineering student at Duy Tan University, with a strong foundation in \textbf{Python, Java, C\#}, and web frameworks (\textbf{Django, FastAPI, ASP.NET, Spring Boot}). Ready to apply knowledge of \textbf{Leader} roles and \textbf{Agile Scrum} processes in a professional environment. Eager to leverage both \textbf{Backend/Full-stack Development} capabilities to build products and specialized \textbf{Automation Testing (Java/Selenium)} skills to ensure comprehensive software quality.
+Final-year Software Engineering student at Duy Tan University, with strong skills in Python, Java, and C\#. Experienced in Backend Development and Automation Testing, with solid knowledge of Agile Scrum and team leadership. Seeking an opportunity to apply technical expertise in Backend/Full-stack development and build scalable, high-quality software systems.
 
-%Experience
+%----------------------------------------------------------------------------------------
+%	PROJECT EXPERIENCE
+%----------------------------------------------------------------------------------------
 \section{Project Experience}
 
-% --- PROJECT 1 (UPDATED) ---
-\begin{joblong}{FAMILY SUGGESTION SYSTEM \normalfont\small{\href{https://github.com/orgs/Capstone-2-FMSuggestion-System/repositories}{(\faGithub\ Source Code)}}}{Feb 2025}
-\item \textbf{Role:} \textbf{Project Leader}. Responsible for \textbf{database design (MySQL)}, programming the entire \textbf{Backend API (Python/FastAPI)}, and \textbf{developing the Crawling Tool with Python/Selenium} to gather source data.
-\item \textbf{Core Functionality:} Programmed logic to suggest food suitable for user health based on their health history.
-\item \textbf{Performance Optimization:} Integrated \textbf{Redis Caching} to store temporary data, significantly reducing query processing time to the MySQL DB.
-\item \textbf{Process:} Operated and managed the project using the \textbf{Agile Scrum} model.
-\item \textbf{Technologies:} Python, FastAPI, React, Redis, MySQL.
+\begin{joblong}{Family Suggestion System \textnormal{$|$ \textit{Project Leader}}}{Feb 2025}
+    \item Led a team of 5 members and managed development across 4 Agile sprints.
+    \item Designed MySQL database schema and developed $\sim$20 backend API endpoints using FastAPI.
+    \item Built a Python/Selenium crawling tool, collecting \textbf{$\sim$2,000 health-related records} for the recommendation engine.
+    \item Implemented food-suggestion logic based on users' health history and nutrition data.
+    \item \textbf{Tech stack:} Python, FastAPI, React, MySQL, Redis.
 \end{joblong}
 
-% --- PROJECT 2 (UPDATED) ---
-\begin{joblong}{AI PRODUCT RECOMMENDATIONS FOR E-COMMERCE \normalfont\small{\href{https://github.com/orgs/Capstone-1-AI-Product-Recommendations/repositories}{(\faGithub\ Source Code)}}}{Sep 2024}
-\item \textbf{Role:} \textbf{Project Leader}. Responsible for \textbf{database design}, served as the main \textbf{Backend developer (Python/Django)}, and also \textbf{developed the Crawling Tool with Python/Selenium} to gather data for the website.
-\item \textbf{Core Functionality:} Built a personalized product recommendation platform based on user interaction data on the system.
-\item \textbf{Performance Optimization:} Applied \textbf{Redis Caching}, significantly reducing query processing time to the MySQL DB, improving user experience.
-\item \textbf{Process:} Built and deployed the project following the \textbf{Agile Scrum} model.
-\item \textbf{Technologies:} Python, Django, React, Redis, MySQL.
+\vspace{5pt}
+
+\begin{joblong}{AI Product Recommendations for E-Commerce \textnormal{$|$ \textit{Project Leader}}}{Sep 2024}
+    \item Coordinated a 5-member team through 4 sprints under the Agile Scrum process.
+    \item Designed database structure and implemented backend services using Django ($\sim$20 API endpoints).
+    \item Developed a Python/Selenium crawling system to gather \textbf{$\sim$2,000 product data entries} for recommendations.
+    \item Built personalized product-suggestion logic based on user interaction patterns.
+    \item \textbf{Tech stack:} Python, Django, React, MySQL, Redis.
 \end{joblong}
 
 %----------------------------------------------------------------------------------------
-%	EDUCATION
+%	EDUCATION & CERTIFICATIONS
 %----------------------------------------------------------------------------------------
-\section{Education \& Certification}
+\section{Education \& Certifications}
 
-\textbf{EDUCATION}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-2021 – 2025 & Bachelor of Software Engineering at \textbf{Duy Tan University} \\
-\end{tabularx}
-
-\vspace{5pt} % Small space
-\textbf{PROFESSIONAL TRAINING}
-
-\begin{joblong}{Software Testing Course (Manual \& Automation)}{CyberSoft Academy}
-\item Content: Completed specialized training in Test Case Design, API Testing, and \textbf{Automation Testing} (using \textbf{Java/Selenium WebDriver, TestNG}).
-\end{joblong}
-
-\begin{jobshort}{Cyber Security Certificate}{AGEST (Sep 2024)}
+% Education
+\begin{jobshort}{Bachelor of Software Engineering}{2021 -- 2025}
+Duy Tan University
 \end{jobshort}
 
+\vspace{8pt}
+
+% Certifications - UPDATED SECTION
+\begin{joblong}{Professional Training: Software Testing (Manual \& Automation)}{CyberSoft Academy}
+    \item Completed comprehensive training in Manual Testing, Automation Testing, API Testing, and Performance Testing.
+    \item Developed hands-on skills with Java, Selenium WebDriver, TestNG, Postman, JMeter, and Jira for bug tracking and project management.
+\end{joblong}
+
+\vspace{2pt}
+
+\begin{jobshort}{Cyber Security Certificate}{Sep 2024}
+AGEST
+\end{jobshort}
 
 %----------------------------------------------------------------------------------------
-%	SKILLS
+%	PROFESSIONAL SKILLS
 %----------------------------------------------------------------------------------------
 \section{Professional Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Programming Languages & \normalsize{PYTHON, JAVA, C\#, C/C++}\\
-Web Frameworks & \normalsize{DJANGO, FASTAPI, SPRING BOOT, ASP.NET}\\
-Testing \& QA & \normalsize{\textbf{Automation:} Java, Selenium WebDriver, JUnit/TestNG. \textbf{Manual:} Test Case Design, Test Planning, API Testing (Postman).}\\
-Databases & \normalsize{MySQL, SQL Server, Redis}\\
-Tools \& Others & \normalsize{Git, \textbf{Agile Scrum (Project Management)}, \textbf{Selenium (Data Crawling)}, Visual Studio, PyCharm, VS Code, Postman.}\\ % Rasa removed
+\textbf{Programming Languages} & Python, Java, C\#, C/C++ \\
+[3pt]
+\textbf{Web Frameworks}        & Django, FastAPI, ASP.NET, Spring Boot \\
+[3pt]
+\textbf{Testing \& QA}         & \textbf{Automation:} Java, Selenium WebDriver, JUnit, TestNG. \\
+                               & \textbf{Manual:} Test Case Design, Test Planning, API Testing (Postman). \\
+[3pt]
+\textbf{Databases}             & MySQL, SQL Server, Redis \\
+[3pt]
+\textbf{Tools \& Others}       & Git, Agile Scrum, Visual Studio, PyCharm, VS Code, Postman, Selenium for data crawling. \\
 \end{tabularx}
-
-\vfill
-% \center{\footnotesize Last updated: \today}
 
 \end{document}
