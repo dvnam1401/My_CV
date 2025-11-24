@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  24 NOV 2025 17:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  24 NOV 2025 17:43
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **cv.tex
 (./cv.tex
@@ -449,8 +448,9 @@ LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-) (./cv.aux)
-\openout1 = `cv.aux'.
+)
+(./Dang_Van_Nam_CV.aux)
+\openout1 = `Dang_Van_Nam_CV.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 112.
 LaTeX Font Info:    ... okay on input line 112.
@@ -529,9 +529,9 @@ e
 
 \big@size=\dimen190
 Package hyperref Info: Link coloring ON on input line 112.
-(./cv.out) (./cv.out)
+(./Dang_Van_Nam_CV.out) (./Dang_Van_Nam_CV.out)
 \@outlinefile=\write3
-\openout3 = `cv.out'.
+\openout3 = `Dang_Van_Nam_CV.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd)
@@ -547,17 +547,17 @@ Package hyperref Info: Link coloring ON on input line 112.
 st/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/f
 ontawesome5/fa5free2.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawe
 some5/fa5free1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome5/
-fa5brands0.enc}] [2] (./cv.aux)
+fa5brands0.enc}] [2] (./Dang_Van_Nam_CV.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-Package rerunfilecheck Info: File `cv.out' has not changed.
+Package rerunfilecheck Info: File `Dang_Van_Nam_CV.out' has not changed.
 (rerunfilecheck)             Checksum: B87B34C3C5151E62EE0960DE0704041C;615.
  ) 
 Here is how much of TeX's memory you used:
- 13817 strings out of 476182
- 236438 string characters out of 5795594
+ 13818 strings out of 476182
+ 236661 string characters out of 5795594
  1941975 words of memory out of 5000000
  35628 multiletter control sequences out of 15000+600000
  578173 words of font info for 73 fonts, out of 8000000 for 9000
@@ -569,7 +569,7 @@ ands-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome5
 msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on cv.pdf (2 pages, 96754 bytes).
+Output written on Dang_Van_Nam_CV.pdf (2 pages, 96754 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  58 compressed objects within 1 object stream
